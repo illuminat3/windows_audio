@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 onPressed: () async {
                   // Load and play an audio file
-                  await _windowsAudioPlugin.load("path/to/audio");
+                  await _windowsAudioPlugin.load("assets/audio/default.mp3");
                   _windowsAudioPlugin.play();
                 },
                 child: const Text('Play Audio'),
