@@ -8,7 +8,13 @@ Add the flutter plugin to your pubspec.yaml file
 
 ```yaml
 dependencies:
-  windows_audio: ^0.0.1
+  windows_audio: ^1.0.0
+```
+
+Firstly, import the flutter plugin
+
+```dart
+import "package:windows_audio/windows_audio.dart";
 ```
 
 Then create an instance of the player
@@ -20,8 +26,15 @@ final Player = WindowsAudio();
 Finally load the audio and play it
 
 ```dart
-Player.load("path/to/audio");
+Player.load("assets/audio/filename");
 Player.play();
 ```
 
-This supports wav, mp3 and ogg files.
+Make sure that you have added the audio to the pubspec.yaml file
+
+```yaml
+assets:
+ - assets/audio/filename
+```
+
+This plugin supports wav, mp3 and ogg files.
