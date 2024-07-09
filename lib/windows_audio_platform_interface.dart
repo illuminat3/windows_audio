@@ -15,8 +15,9 @@ abstract class WindowsAudioPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  // In future find a way to get this from pubspec.yaml
   Future<String?> getPlatformVersion() async {
-    return "0.0.2";
+    return "1.0.0";
   }
 
   Future<void> load(String filePath) {
