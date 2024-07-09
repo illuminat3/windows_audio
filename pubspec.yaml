@@ -1,6 +1,6 @@
 name: windows_audio
-description: "A new Flutter plugin project."
-version: 0.0.1
+description: "A simple windows audio library"
+version: 0.0.2
 homepage: "https://github.com/illuminat3/windows_audio"
 
 environment:
@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
   logging: ^1.2.0
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
