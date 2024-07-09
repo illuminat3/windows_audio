@@ -1,6 +1,6 @@
 # windows_audio
 
-A simple windows audio plugin for flutter
+A simple [windows audio plugin](https://pub.dev/packages/windows_audio) for flutter
 
 ## Implementation
 
