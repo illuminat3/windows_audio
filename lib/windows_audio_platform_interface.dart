@@ -15,8 +15,8 @@ abstract class WindowsAudioPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('getPlatformVersion() has not been implemented.');
+  Future<String?> getPlatformVersion() async {
+    return "0.0.2";
   }
 
   Future<void> load(String filePath) {

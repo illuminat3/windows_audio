@@ -15,12 +15,6 @@ class MethodChannelWindowsAudio extends WindowsAudioPlatform {
   }
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await _channel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
-
-  @override
   Future<void> load(String filePath) async {
     try {
       await _channel.invokeMethod('load', filePath);

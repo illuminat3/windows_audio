@@ -1,43 +1,48 @@
-#include <flutter/method_call.h>
-#include <flutter/method_result_functions.h>
-#include <flutter/standard_method_codec.h>
-#include <gtest/gtest.h>
-#include <windows.h>
-
-#include <memory>
-#include <string>
-#include <variant>
-
 #include "windows_audio_plugin.h"
+#include <flutter/standard_method_codec.h> 
+#include <gtest/gtest.h>
+#include <memory>
 
 namespace windows_audio {
-namespace test {
 
-namespace {
+// Define the friend test class
+class WindowsAudioPluginTest {
+ public:
+  static void TestHandleMethodCall(WindowsAudioPlugin& plugin,
+      const flutter::MethodCall<flutter::EncodableValue>& method_call,
+      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
+    plugin.HandleMethodCall(method_call, std::move(result));
+  }
+};
 
-using flutter::EncodableMap;
-using flutter::EncodableValue;
-using flutter::MethodCall;
-using flutter::MethodResultFunctions;
+// Mock class for flutter::MethodResult
+class MockMethodResult : public flutter::MethodResult<flutter::EncodableValue> {
+ public:
+  MockMethodResult() : flutter::MethodResult<flutter::EncodableValue>() {}
 
-}  // namespace
+  void SuccessInternal(const flutter::EncodableValue* result) override {
+   
+  }
 
-TEST(WindowsAudioPlugin, GetPlatformVersion) {
+  void ErrorInternal(const std::string& error_code,
+                     const std::string& error_message,
+                     const flutter::EncodableValue* details) override {
+
+  }
+
+  void NotImplementedInternal() override {
+
+  }
+};
+
+// Example test case
+TEST(WindowsAudioPlugin, HandleMethodCallLoad) {
   WindowsAudioPlugin plugin;
-  // Save the reply value from the success callback.
-  std::string result_string;
-  plugin.HandleMethodCall(
-      MethodCall("getPlatformVersion", std::make_unique<EncodableValue>()),
-      std::make_unique<MethodResultFunctions<>>(
-          [&result_string](const EncodableValue* result) {
-            result_string = std::get<std::string>(*result);
-          },
-          nullptr, nullptr));
+  auto result = std::make_unique<MockMethodResult>();
+  auto args = std::make_unique<flutter::EncodableValue>(flutter::EncodableValue("test_audio.mp3"));
+  flutter::MethodCall<flutter::EncodableValue> method_call("load", std::move(args));
 
-  // Since the exact string varies by host, just ensure that it's a string
-  // with the expected format.
-  EXPECT_TRUE(result_string.rfind("Windows ", 0) == 0);
+  WindowsAudioPluginTest::TestHandleMethodCall(plugin, method_call, std::move(result));
 }
 
-}  // namespace test
 }  // namespace windows_audio

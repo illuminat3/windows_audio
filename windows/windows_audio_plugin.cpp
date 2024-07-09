@@ -19,29 +19,7 @@
 
 namespace windows_audio {
 
-class WindowsAudioPlugin : public flutter::Plugin {
- public:
-  static void RegisterWithRegistrar(flutter::PluginRegistrarWindows *registrar);
-
-  WindowsAudioPlugin();
-
-  virtual ~WindowsAudioPlugin();
-
- private:
-  void HandleMethodCall(
-      const flutter::MethodCall<flutter::EncodableValue> &method_call,
-      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
-
-  void Load(const std::string &file_path);
-  void Play();
-
-  std::string audio_file_path_;
-  std::thread audio_thread_;
-  ma_engine engine_;
-  ma_sound sound_;
-};
-
-// static
+// Static
 void WindowsAudioPlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows *registrar) {
   auto channel =
@@ -121,4 +99,3 @@ void WindowsAudioPlugin::Play() {
 }
 
 }  // namespace windows_audio
-
