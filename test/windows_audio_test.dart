@@ -7,9 +7,18 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockWindowsAudioPlatform
     with MockPlatformInterfaceMixin
     implements WindowsAudioPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
+
+  @override
+  Future<void> load(String filePath) async {
+    // Mock implementation for load method
+  }
+
+  @override
+  Future<void> play() async {
+    // Mock implementation for play method
+  }
 }
 
 void main() {
